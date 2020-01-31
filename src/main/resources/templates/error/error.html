@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>错误</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container" style="margin-top:50px;max-width:600px">
+    <div class="jumbotron">
+        <h2>error</h2>
+        <p>对不起，后台服务异常</p>
+        <!--<p>请求路径:<span th:text="${url}"></span></p>-->
+        <!--<p>异常信息：<code th:text="${exception.message}"></code></p>-->
+    </div>
+
+
+    <div th:utext="'&lt;!--'" th:remove="tag"></div>
+    <div th:utext="'Failed Request URL:' + ${url}" th:remove="tag"></div>
+    <div th:utext="'Exception message:' + ${exception.message}" th:remove="tag"></div>
+    <ul>
+        <li th:each="st:${exception.stackTrace}" th:remove="tag"><span th:utext="${st}" th:remove="tag"></span></li>
+    </ul>
+    <div th:utext="'--&gt;'" th:remove="tag"></div>
+</div>
+</body>
+</html>
